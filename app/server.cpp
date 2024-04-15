@@ -68,7 +68,7 @@ int main()
         cout << "Client connected!" << endl;
         // Communication with client...
 
-   		isExit = false;
+   	isExit = false;
     	while (!isExit) {
 	    cout << endl;
             cout << "Server: ";
