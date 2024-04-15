@@ -32,7 +32,7 @@ int main()
     cout << "************ WELCOME TO REAL-TIME CHAT SERVER ************" << endl << endl;
 	if (listenSocket < 0) {
         cout << "=> Failed to create socket!" << endl;
-		perror("Error: ");
+	perror("Error: ");
         return EXIT_FAILURE;
     }
 
@@ -46,7 +46,7 @@ int main()
     if (bind(listenSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress)) < 0) {
         cout << "=> Binding failed!" << endl;
         perror("Error: ");
-		return EXIT_FAILURE;
+	return EXIT_FAILURE;
     }
 
     /* ------------ Listening the incomming socket ------------
@@ -54,12 +54,12 @@ int main()
     if (listen(listenSocket, 1) < 0) {
         cout << "=> Listening failed!" << endl;
         perror("Error: ");
-		return EXIT_FAILURE;
+	return EXIT_FAILURE;
     }
 
-	cout << "=> Socket server has been successfully created....." << endl;
-	cout << "=> bind() OK!....." << endl;
-	cout << "=> listen() OK! Listening for the incomming socket connections....." << endl;
+    cout << "=> Socket server has been successfully created....." << endl;
+    cout << "=> bind() OK!....." << endl;
+    cout << "=> listen() OK! Listening for the incomming socket connections....." << endl;
     cout << "=> Server is waiting for client connections....." << endl;
     
     /* ------------ Accepting the socket ------------
@@ -70,20 +70,20 @@ int main()
 
    		isExit = false;
     	while (!isExit) {
-			cout << endl;
-        	cout << "Server: ";
-        	cin.getline(buffer, BUF_SIZE);
-        	send(clientSocket, buffer, BUF_SIZE, 0);
-        	if (*buffer == '#') {
-            	*buffer = '*'; // Cleanly mark end of communication intent
+	    cout << endl;
+            cout << "Server: ";
+            cin.getline(buffer, BUF_SIZE);
+            send(clientSocket, buffer, BUF_SIZE, 0);
+            if (*buffer == '#') {
+                *buffer = '*'; // Cleanly mark end of communication intent
             	isExit = true;
             	continue; // Skip the next part if we're exiting
-        	}
+            }
 
-        	recv(clientSocket, buffer, BUF_SIZE, 0);
-        	if (*buffer == '#')
+ 	    recv(clientSocket, buffer, BUF_SIZE, 0);
+            if (*buffer == '#')
             	isExit = true; // Prepare to exit if client sends '#'
-        	else
+            else
             	cout << "Client: " << buffer << " ";
     	}
         
