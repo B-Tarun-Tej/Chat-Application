@@ -30,7 +30,7 @@ int main()
     /* ------------ socket() function ------------ */
     listenSocket = socket(AF_INET, SOCK_STREAM, 0);
     cout << "************ WELCOME TO REAL-TIME CHAT SERVER ************" << endl << endl;
-	if (listenSocket < 0) {
+    if (listenSocket < 0) {
         cout << "=> Failed to create socket!" << endl;
 	perror("Error: ");
         return EXIT_FAILURE;
