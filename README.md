@@ -1,6 +1,4 @@
 # Chat-Application - A Server-Client Chat application
-
-# Chat Application
 This project is a real-time C++ server-client chat application developed using socket programming and TCP protocol. It runs within the Linux command-line interface.
 
 # Features
