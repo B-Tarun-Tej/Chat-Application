@@ -62,7 +62,8 @@ int main()
 	cout << "=> listen() OK! Listening for the incomming socket connections....." << endl;
     cout << "=> Server is waiting for client connections....." << endl;
     
-    // Accept loop
+    /* ------------ Accepting the socket ------------
+       ------------ accept() function ------------ */
     while ((clientSocket = accept(listenSocket, (struct sockaddr *)&serverAddress, &size)) > 0) {
         cout << "Client connected!" << endl;
         // Communication with client...
