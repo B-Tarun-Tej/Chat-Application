@@ -35,7 +35,7 @@ int main()
     if (client < 0) {
         cout << "=> Failed to establish the socket....." << endl;
         perror("Error: ");
-		return EXIT_FAILURE;
+	return EXIT_FAILURE;
     }
 
     cout << "=> Socket server has been successfully created....." << endl;
@@ -47,29 +47,29 @@ int main()
 
     /* ------------ Connecting the Socket ------------
        ------------ connect() function ------------ */
-	if (connect(client, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) < 0) {
-		cout << "=> Failed to connect the socket" << endl;
-		perror("Error: ");
-		return EXIT_FAILURE;
-	} 
-	else {
-		cout << "=> Connection to the server port number: " << PORT_NO << endl;
+    if (connect(client, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) < 0) {
+        cout << "=> Failed to connect the socket" << endl;
+	perror("Error: ");
+	return EXIT_FAILURE;
+    } 
+    else {
+	cout << "=> Connection to the server port number: " << PORT_NO << endl;
         cout << "=> Awaiting confirmation from the server....." << endl; // line 38
         recv(client, buffer, BUF_SIZE, 0);
         cout << "=> Connection confirmed, you are good to go.....";
         cout << "\n\n=> Enter # to end the connection\n\n";
-	}
+    }
     // Once it reaches here the client can send a message first
     do {
         cout << "Client: ";
         cin.getline(buffer, BUF_SIZE);
 
-		// Validating the connection before sending the data
-		if (send(client, buffer, BUF_SIZE, 0) < 0) {
-    		cout << "Failed to send the message....." << endl;
-			perror("Error: ");
+	// Validating the connection before sending the data
+	if (send(client, buffer, BUF_SIZE, 0) < 0) {
+    	    cout << "Failed to send the message....." << endl;
+	    perror("Error: ");
             break;
-		}
+	}
 
         if (*buffer == '#')
             isExit = true;
